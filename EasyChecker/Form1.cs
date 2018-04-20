@@ -45,6 +45,7 @@ namespace EasyChecker
                     }
                     else
                     {
+                        labelDnsCheck.ForeColor = Color.Red;
                         label1Dot.Text = GeoIPLocal(labelIP1dot.Text);
                     }
                     labelLocal.Text = GeoIPLocal(labelIPLocal.Text);
@@ -87,7 +88,7 @@ namespace EasyChecker
             {
                 addr += "," + locJson.AsObjectGetString("city");
             }
-            return "";
+            return addr;
         }
     }
 }
