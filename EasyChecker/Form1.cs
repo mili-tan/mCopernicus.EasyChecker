@@ -1,15 +1,11 @@
 ﻿using Copernicus.ShadowsocksURi;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using IPIP17Mon.IP;
+using MojoUnity;
 
 namespace EasyChecker
 {
@@ -18,6 +14,7 @@ namespace EasyChecker
         public Form1()
         {
             InitializeComponent();
+            IPExt.Load("7monipdb.datx");
         }
 
         private void TextBoxURL_KeyDown(object sender, KeyEventArgs e)
@@ -42,11 +39,21 @@ namespace EasyChecker
                     labelIPLocal.Text = Dns.GetHostAddresses(sEntity.serverIpStr)[0].ToString();
                     labelIP1dot.Text = HttpsDNSHostAddresses(sEntity.serverIpStr);
                     panel1dot.Show();
+                    if (labelIP1dot.Text == labelIPLocal.Text)
+                    {
+                        labelDnsCheck.ForeColor = Color.Green;
+                    }
+                    else
+                    {
+                        //label1Dot.Text = string.Join(",", IPExt.Find("1.1.1.1"));
+                    }
+                    //labelLocal.Text = string.Join(",", IPExt.Find(labelIPLocal.Text));
                 }
                 else
                 {
                     labelIPLocal.Text = sEntity.serverIpStr;
                 }
+
 
             }
         }
@@ -59,14 +66,15 @@ namespace EasyChecker
         public static string HttpsDNSHostAddresses(string serverIpStr)
         {
             string dnsStr = new WebClient().DownloadString($"https://cloudflare-dns.com/dns-query?ct=application/dns-json&name={serverIpStr}&type=A");
-            MojoUnity.JsonValue dnsAnswer = MojoUnity.Json.Parse(dnsStr).AsObjectGet("Answer");
-            if (IsIP(dnsAnswer.AsArrayGet(0).AsObjectGetString("data")))
+            JsonValue dnsAnswer = Json.Parse(dnsStr).AsObjectGet("Answer");
+            string ipAnswer = dnsAnswer.AsArrayGet(0).AsObjectGetString("data");
+            if (IsIP(ipAnswer))
             {
-                return dnsAnswer.AsArrayGet(0).AsObjectGetString("data");
+                return ipAnswer;
             }
             else
             {
-                return HttpsDNSHostAddresses(dnsAnswer.AsArrayGet(0).AsObjectGetString("data"));
+                return HttpsDNSHostAddresses(ipAnswer);
             }
         }
     }
