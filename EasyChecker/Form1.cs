@@ -45,9 +45,9 @@ namespace EasyChecker
                     }
                     else
                     {
-                        //label1Dot.Text = string.Join(",", IPExt.Find("1.1.1.1"));
+                        label1Dot.Text = GeoIPLocal(labelIP1dot.Text);
                     }
-                    //labelLocal.Text = string.Join(",", IPExt.Find(labelIPLocal.Text));
+                    labelLocal.Text = GeoIPLocal(labelIPLocal.Text);
                 }
                 else
                 {
@@ -66,16 +66,28 @@ namespace EasyChecker
         public static string HttpsDNSHostAddresses(string serverIpStr)
         {
             string dnsStr = new WebClient().DownloadString($"https://cloudflare-dns.com/dns-query?ct=application/dns-json&name={serverIpStr}&type=A");
-            JsonValue dnsAnswer = Json.Parse(dnsStr).AsObjectGet("Answer");
-            string ipAnswer = dnsAnswer.AsArrayGet(0).AsObjectGetString("data");
-            if (IsIP(ipAnswer))
+            JsonValue dnsAnswerJson = Json.Parse(dnsStr).AsObjectGet("Answer");
+            string ipAnswerStr = dnsAnswerJson.AsArrayGet(0).AsObjectGetString("data");
+            if (IsIP(ipAnswerStr))
             {
-                return ipAnswer;
+                return ipAnswerStr;
             }
             else
             {
-                return HttpsDNSHostAddresses(ipAnswer);
+                return HttpsDNSHostAddresses(ipAnswerStr);
             }
+        }
+
+        public static string GeoIPLocal(string IpStr)
+        {
+            string locStr = new WebClient().DownloadString($"https://api.ip.sb/geoip/{IpStr}");
+            JsonValue locJson = Json.Parse(locStr);
+            string addr = locJson.AsObjectGetString("country_code3");
+            if (!string.IsNullOrWhiteSpace(locJson.AsObjectGetString("city")))
+            {
+                addr += "," + locJson.AsObjectGetString("city");
+            }
+            return "";
         }
     }
 }
