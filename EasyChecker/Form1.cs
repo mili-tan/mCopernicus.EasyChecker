@@ -57,6 +57,7 @@ namespace EasyChecker
                 }
 
                 PingReply replyPing = MyPing(sEntity.serverIpStr);
+
                 if (replyPing.Status == IPStatus.Success)
                 {
                     labelPingCheck.ForeColor = Color.Green;
