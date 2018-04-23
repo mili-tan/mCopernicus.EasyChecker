@@ -4,8 +4,9 @@ using System.Drawing;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using IPIP17Mon.IP;
 using MojoUnity;
+using System.Net.NetworkInformation;
+using System.Text;
 
 namespace EasyChecker
 {
@@ -14,7 +15,6 @@ namespace EasyChecker
         public Form1()
         {
             InitializeComponent();
-            IPExt.Load("7monipdb.datx");
         }
 
         private void TextBoxURL_KeyDown(object sender, KeyEventArgs e)
@@ -34,6 +34,7 @@ namespace EasyChecker
                 }
 
                 panelLocalDNS.Show();
+
                 if (!IsIP(sEntity.serverIpStr))
                 {
                     labelIPLocal.Text = Dns.GetHostAddresses(sEntity.serverIpStr)[0].ToString();
@@ -55,7 +56,16 @@ namespace EasyChecker
                     labelIPLocal.Text = sEntity.serverIpStr;
                 }
 
-
+                PingReply replyPing = MyPing(sEntity.serverIpStr);
+                if (replyPing.Status == IPStatus.Success)
+                {
+                    labelPingCheck.ForeColor = Color.Green;
+                }
+                else
+                {
+                    labelPingCheck.ForeColor = Color.Red;
+                }
+                labelPingTimeOut.Text = replyPing.RoundtripTime.ToString() + "ms";
             }
         }
 
@@ -89,6 +99,14 @@ namespace EasyChecker
                 addr += "," + locJson.AsObjectGetString("city");
             }
             return addr;
+        }
+
+        public static PingReply MyPing(string IpStr)
+        {
+            Ping ping = new Ping();
+            PingOptions pingOption = new PingOptions(50, true);
+            byte[] bufferBytes = {00,01,00,01,00,01,00,01};
+            return ping.Send(IpStr, 50, bufferBytes);
         }
     }
 }
