@@ -30,6 +30,7 @@
         {
             this.textBoxURL = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelPingCheck = new System.Windows.Forms.Label();
             this.panel1dot = new System.Windows.Forms.TableLayoutPanel();
             this.label1Dot = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,7 +41,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelDnsCheck = new System.Windows.Forms.Label();
             this.labelPingTimeOut = new System.Windows.Forms.Label();
-            this.labelPingCheck = new System.Windows.Forms.Label();
+            this.labelTCPingCheck = new System.Windows.Forms.Label();
+            this.labelTCPingTimeOut = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1dot.SuspendLayout();
             this.panelLocalDNS.SuspendLayout();
@@ -63,12 +65,14 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.58621F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.41379F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.tableLayoutPanel1.Controls.Add(this.labelPingCheck, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1dot, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panelLocalDNS, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelDnsCheck, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelPingTimeOut, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelTCPingCheck, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.labelTCPingTimeOut, 1, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 52);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -79,6 +83,17 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(462, 502);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
+            // labelPingCheck
+            // 
+            this.labelPingCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelPingCheck.AutoSize = true;
+            this.labelPingCheck.Location = new System.Drawing.Point(3, 103);
+            this.labelPingCheck.Name = "labelPingCheck";
+            this.labelPingCheck.Size = new System.Drawing.Size(101, 20);
+            this.labelPingCheck.TabIndex = 5;
+            this.labelPingCheck.Text = "Ping查询";
+            this.labelPingCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel1dot
             // 
             this.panel1dot.ColumnCount = 1;
@@ -86,7 +101,7 @@
             this.panel1dot.Controls.Add(this.label1Dot, 0, 2);
             this.panel1dot.Controls.Add(this.label3, 0, 0);
             this.panel1dot.Controls.Add(this.labelIP1dot, 0, 1);
-            this.panel1dot.Location = new System.Drawing.Point(290, 3);
+            this.panel1dot.Location = new System.Drawing.Point(289, 3);
             this.panel1dot.Name = "panel1dot";
             this.panel1dot.RowCount = 3;
             this.panel1dot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
@@ -132,7 +147,7 @@
             this.panelLocalDNS.Controls.Add(this.labelLocal, 0, 2);
             this.panelLocalDNS.Controls.Add(this.labelIPLocal, 0, 1);
             this.panelLocalDNS.Controls.Add(this.label2, 0, 0);
-            this.panelLocalDNS.Location = new System.Drawing.Point(111, 3);
+            this.panelLocalDNS.Location = new System.Drawing.Point(110, 3);
             this.panelLocalDNS.Name = "panelLocalDNS";
             this.panelLocalDNS.RowCount = 3;
             this.panelLocalDNS.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
@@ -177,7 +192,7 @@
             this.labelDnsCheck.AutoSize = true;
             this.labelDnsCheck.Location = new System.Drawing.Point(3, 32);
             this.labelDnsCheck.Name = "labelDnsCheck";
-            this.labelDnsCheck.Size = new System.Drawing.Size(102, 20);
+            this.labelDnsCheck.Size = new System.Drawing.Size(101, 20);
             this.labelDnsCheck.TabIndex = 0;
             this.labelDnsCheck.Text = "DNS查询";
             this.labelDnsCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -186,21 +201,30 @@
             // 
             this.labelPingTimeOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPingTimeOut.AutoSize = true;
-            this.labelPingTimeOut.Location = new System.Drawing.Point(111, 103);
+            this.labelPingTimeOut.Location = new System.Drawing.Point(110, 103);
             this.labelPingTimeOut.Name = "labelPingTimeOut";
             this.labelPingTimeOut.Size = new System.Drawing.Size(173, 20);
             this.labelPingTimeOut.TabIndex = 4;
             // 
-            // labelPingCheck
+            // labelTCPingCheck
             // 
-            this.labelPingCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelPingCheck.AutoSize = true;
-            this.labelPingCheck.Location = new System.Drawing.Point(3, 103);
-            this.labelPingCheck.Name = "labelPingCheck";
-            this.labelPingCheck.Size = new System.Drawing.Size(102, 20);
-            this.labelPingCheck.TabIndex = 5;
-            this.labelPingCheck.Text = "Ping查询";
-            this.labelPingCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTCPingCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelTCPingCheck.AutoSize = true;
+            this.labelTCPingCheck.Location = new System.Drawing.Point(3, 166);
+            this.labelTCPingCheck.Name = "labelTCPingCheck";
+            this.labelTCPingCheck.Size = new System.Drawing.Size(101, 20);
+            this.labelTCPingCheck.TabIndex = 6;
+            this.labelTCPingCheck.Text = "TCPing查询";
+            this.labelTCPingCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelTCPingTimeOut
+            // 
+            this.labelTCPingTimeOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelTCPingTimeOut.AutoSize = true;
+            this.labelTCPingTimeOut.Location = new System.Drawing.Point(110, 166);
+            this.labelTCPingTimeOut.Name = "labelTCPingTimeOut";
+            this.labelTCPingTimeOut.Size = new System.Drawing.Size(173, 20);
+            this.labelTCPingTimeOut.TabIndex = 7;
             // 
             // Form1
             // 
@@ -239,6 +263,8 @@
         private System.Windows.Forms.Label labelLocal;
         private System.Windows.Forms.Label labelPingCheck;
         private System.Windows.Forms.Label labelPingTimeOut;
+        private System.Windows.Forms.Label labelTCPingCheck;
+        private System.Windows.Forms.Label labelTCPingTimeOut;
     }
 }
 

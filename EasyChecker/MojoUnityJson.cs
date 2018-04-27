@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Text;
 using System;
 
+// ReSharper disable once CheckNamespace
 namespace MojoUnity
 {
     public static class Json 

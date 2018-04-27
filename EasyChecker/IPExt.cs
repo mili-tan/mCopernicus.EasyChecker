@@ -104,7 +104,10 @@ namespace IPIP17Mon.IP
                         }
                     }
                 }
-                catch { }
+                catch
+                {
+                    // 
+                }
             }
         }
 

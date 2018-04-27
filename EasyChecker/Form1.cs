@@ -1,12 +1,12 @@
 ﻿using Copernicus.ShadowsocksURi;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MojoUnity;
 using System.Net.NetworkInformation;
-using System.Text;
 
 namespace EasyChecker
 {
@@ -25,7 +25,7 @@ namespace EasyChecker
             {
                 try
                 {
-                    sEntity = SSURi.Parse(textBoxURL.Text);
+                    sEntity = SSUri.Parse(textBoxURL.Text);
                     textBoxURL.BackColor = Color.LightGreen;
                 }
                 catch (Exception)
@@ -35,10 +35,10 @@ namespace EasyChecker
 
                 panelLocalDNS.Show();
 
-                if (!IsIP(sEntity.serverIpStr))
+                if (!IsIp(sEntity.ServerIpStr))
                 {
-                    labelIPLocal.Text = Dns.GetHostAddresses(sEntity.serverIpStr)[0].ToString();
-                    labelIP1dot.Text = HttpsDNSHostAddresses(sEntity.serverIpStr);
+                    labelIPLocal.Text = Dns.GetHostAddresses(sEntity.ServerIpStr)[0].ToString();
+                    labelIP1dot.Text = HttpsDnsHostAddresses(sEntity.ServerIpStr);
                     panel1dot.Show();
                     if (labelIP1dot.Text == labelIPLocal.Text)
                     {
@@ -47,17 +47,18 @@ namespace EasyChecker
                     else
                     {
                         labelDnsCheck.ForeColor = Color.Red;
-                        label1Dot.Text = GeoIPLocal(labelIP1dot.Text);
+                        label1Dot.Text = GeoIpLocal(labelIP1dot.Text);
                     }
-                    labelLocal.Text = GeoIPLocal(labelIPLocal.Text);
+                    labelLocal.Text = GeoIpLocal(labelIPLocal.Text);
                 }
                 else
                 {
-                    labelIPLocal.Text = sEntity.serverIpStr;
+                    labelIPLocal.Text = sEntity.ServerIpStr;
                 }
 
-                PingReply replyPing = MyPing(sEntity.serverIpStr);
 
+                PingReply replyPing = MyPing(sEntity.ServerIpStr);
+                labelPingTimeOut.Text = replyPing.RoundtripTime + @"ms";
                 if (replyPing.Status == IPStatus.Success)
                 {
                     labelPingCheck.ForeColor = Color.Green;
@@ -66,33 +67,37 @@ namespace EasyChecker
                 {
                     labelPingCheck.ForeColor = Color.Red;
                 }
-                labelPingTimeOut.Text = replyPing.RoundtripTime.ToString() + "ms";
+
+                var replyTcping = Tcping.Ping(sEntity.ServerIpStr, sEntity.Port);
+                labelTCPingTimeOut.Text = $@"{replyTcping.Min()}/{replyTcping.Average()}/{replyTcping.Max()}ms";
+                if (replyTcping.Average() != 0)
+                {
+                    labelTCPingCheck.ForeColor = Color.Green;
+                }
+                else
+                {
+                    labelTCPingCheck.ForeColor = Color.Red;
+                }
+
             }
         }
 
-        public static bool IsIP(string ip)
+        public static bool IsIp(string ip)
         {
             return Regex.IsMatch(ip, @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$");
         }
 
-        public static string HttpsDNSHostAddresses(string serverIpStr)
+        public static string HttpsDnsHostAddresses(string serverIpStr)
         {
             string dnsStr = new WebClient().DownloadString($"https://cloudflare-dns.com/dns-query?ct=application/dns-json&name={serverIpStr}&type=A");
             JsonValue dnsAnswerJson = Json.Parse(dnsStr).AsObjectGet("Answer");
             string ipAnswerStr = dnsAnswerJson.AsArrayGet(0).AsObjectGetString("data");
-            if (IsIP(ipAnswerStr))
-            {
-                return ipAnswerStr;
-            }
-            else
-            {
-                return HttpsDNSHostAddresses(ipAnswerStr);
-            }
+            return IsIp(ipAnswerStr) ? ipAnswerStr : HttpsDnsHostAddresses(ipAnswerStr);
         }
 
-        public static string GeoIPLocal(string IpStr)
+        public static string GeoIpLocal(string ipStr)
         {
-            string locStr = new WebClient().DownloadString($"https://api.ip.sb/geoip/{IpStr}");
+            string locStr = new WebClient().DownloadString($"https://api.ip.sb/geoip/{ipStr}");
             JsonValue locJson = Json.Parse(locStr);
             string addr = locJson.AsObjectGetString("country_code3");
             if (!string.IsNullOrWhiteSpace(locJson.AsObjectGetString("city")))
@@ -102,12 +107,11 @@ namespace EasyChecker
             return addr;
         }
 
-        public static PingReply MyPing(string IpStr)
+        public static PingReply MyPing(string ipStr)
         {
             Ping ping = new Ping();
-            PingOptions pingOption = new PingOptions(50, true);
             byte[] bufferBytes = {00,01,00,01,00,01,00,01};
-            return ping.Send(IpStr, 50, bufferBytes);
+            return ping.Send(ipStr, 50, bufferBytes);
         }
     }
 }
