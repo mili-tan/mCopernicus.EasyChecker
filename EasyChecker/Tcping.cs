@@ -33,7 +33,15 @@ namespace EasyChecker
                 Stopwatch stopWatch = new Stopwatch();
 
                 stopWatch.Start();
-                socks.Connect(point);
+                try
+                {
+                    socks.Connect(point);
+                }
+                catch
+                {
+                    times.Add(0);
+                    return times;
+                }
                 stopWatch.Stop();
 
                 double time = stopWatch.Elapsed.TotalMilliseconds;

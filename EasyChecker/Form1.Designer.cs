@@ -76,9 +76,9 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 52);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.15493F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.84507F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.19048F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.90476F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.90476F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 290F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(462, 502);
             this.tableLayoutPanel1.TabIndex = 1;
@@ -87,7 +87,7 @@
             // 
             this.labelPingCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPingCheck.AutoSize = true;
-            this.labelPingCheck.Location = new System.Drawing.Point(3, 103);
+            this.labelPingCheck.Location = new System.Drawing.Point(3, 99);
             this.labelPingCheck.Name = "labelPingCheck";
             this.labelPingCheck.Size = new System.Drawing.Size(101, 20);
             this.labelPingCheck.TabIndex = 5;
@@ -107,7 +107,7 @@
             this.panel1dot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
             this.panel1dot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
             this.panel1dot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel1dot.Size = new System.Drawing.Size(166, 78);
+            this.panel1dot.Size = new System.Drawing.Size(166, 70);
             this.panel1dot.TabIndex = 3;
             this.panel1dot.Visible = false;
             // 
@@ -115,7 +115,7 @@
             // 
             this.label1Dot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1Dot.AutoSize = true;
-            this.label1Dot.Location = new System.Drawing.Point(3, 54);
+            this.label1Dot.Location = new System.Drawing.Point(3, 48);
             this.label1Dot.Name = "label1Dot";
             this.label1Dot.Size = new System.Drawing.Size(160, 20);
             this.label1Dot.TabIndex = 3;
@@ -124,7 +124,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 2);
+            this.label3.Location = new System.Drawing.Point(3, 1);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(160, 20);
             this.label3.TabIndex = 0;
@@ -134,7 +134,7 @@
             // 
             this.labelIP1dot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelIP1dot.AutoSize = true;
-            this.labelIP1dot.Location = new System.Drawing.Point(3, 27);
+            this.labelIP1dot.Location = new System.Drawing.Point(3, 24);
             this.labelIP1dot.Name = "labelIP1dot";
             this.labelIP1dot.Size = new System.Drawing.Size(160, 20);
             this.labelIP1dot.TabIndex = 2;
@@ -153,7 +153,7 @@
             this.panelLocalDNS.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
             this.panelLocalDNS.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
             this.panelLocalDNS.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panelLocalDNS.Size = new System.Drawing.Size(173, 78);
+            this.panelLocalDNS.Size = new System.Drawing.Size(173, 70);
             this.panelLocalDNS.TabIndex = 2;
             this.panelLocalDNS.Visible = false;
             // 
@@ -161,7 +161,7 @@
             // 
             this.labelLocal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelLocal.AutoSize = true;
-            this.labelLocal.Location = new System.Drawing.Point(3, 54);
+            this.labelLocal.Location = new System.Drawing.Point(3, 48);
             this.labelLocal.Name = "labelLocal";
             this.labelLocal.Size = new System.Drawing.Size(167, 20);
             this.labelLocal.TabIndex = 2;
@@ -170,7 +170,7 @@
             // 
             this.labelIPLocal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelIPLocal.AutoSize = true;
-            this.labelIPLocal.Location = new System.Drawing.Point(3, 27);
+            this.labelIPLocal.Location = new System.Drawing.Point(3, 24);
             this.labelIPLocal.Name = "labelIPLocal";
             this.labelIPLocal.Size = new System.Drawing.Size(167, 20);
             this.labelIPLocal.TabIndex = 1;
@@ -180,7 +180,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 2);
+            this.label2.Location = new System.Drawing.Point(3, 1);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 20);
             this.label2.TabIndex = 0;
@@ -190,7 +190,7 @@
             // 
             this.labelDnsCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelDnsCheck.AutoSize = true;
-            this.labelDnsCheck.Location = new System.Drawing.Point(3, 32);
+            this.labelDnsCheck.Location = new System.Drawing.Point(3, 28);
             this.labelDnsCheck.Name = "labelDnsCheck";
             this.labelDnsCheck.Size = new System.Drawing.Size(101, 20);
             this.labelDnsCheck.TabIndex = 0;
@@ -201,7 +201,7 @@
             // 
             this.labelPingTimeOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPingTimeOut.AutoSize = true;
-            this.labelPingTimeOut.Location = new System.Drawing.Point(110, 103);
+            this.labelPingTimeOut.Location = new System.Drawing.Point(110, 99);
             this.labelPingTimeOut.Name = "labelPingTimeOut";
             this.labelPingTimeOut.Size = new System.Drawing.Size(173, 20);
             this.labelPingTimeOut.TabIndex = 4;
