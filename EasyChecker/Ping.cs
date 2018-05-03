@@ -47,8 +47,6 @@ namespace EasyChecker
                 double time = stopWatch.Elapsed.TotalMilliseconds;
                 times.Add(Convert.ToInt32(time));
                 socks.Close();
-
-                Thread.Sleep(100);
             }
 
             return times;

@@ -414,9 +414,8 @@ namespace MojoUnity
             }
 
             var   strNum = data.json.Substring(start, data.index - start);
-            float num;
 
-            if (float.TryParse(strNum, out num))
+            if (float.TryParse(strNum, out var num))
             {
                 return new JsonValue(JsonType.Number, num);
             }
@@ -616,9 +615,7 @@ namespace MojoUnity
             DebugTool.Assert(this.type == JsonType.Object, "JsonValue type is not Object !");
             var dict = this.objectValue as Dictionary<string, JsonValue>;
 
-            JsonValue jsonValue;
-
-            if (dict.TryGetValue(key, out jsonValue))
+            if (dict.TryGetValue(key, out var jsonValue))
             {
                 return jsonValue;
             }

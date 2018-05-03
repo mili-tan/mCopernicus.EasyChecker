@@ -6,7 +6,6 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MojoUnity;
-using System.Net.NetworkInformation;
 
 namespace EasyChecker
 {
@@ -57,7 +56,7 @@ namespace EasyChecker
                 }
 
 
-                var replyPing = Ping.Tcping(sEntity.ServerIpStr, sEntity.Port);
+                var replyPing = Ping.MPing(sEntity.ServerIpStr);
                 labelPingTimeOut.Text = $@"{replyPing.Min()}/{replyPing.Average()}/{replyPing.Max()}ms";
                 if (replyPing.Average() != 0)
                 {
