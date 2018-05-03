@@ -65,7 +65,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.58621F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.41379F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
             this.tableLayoutPanel1.Controls.Add(this.labelPingCheck, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1dot, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panelLocalDNS, 1, 0);
@@ -101,7 +101,7 @@
             this.panel1dot.Controls.Add(this.label1Dot, 0, 2);
             this.panel1dot.Controls.Add(this.label3, 0, 0);
             this.panel1dot.Controls.Add(this.labelIP1dot, 0, 1);
-            this.panel1dot.Location = new System.Drawing.Point(289, 3);
+            this.panel1dot.Location = new System.Drawing.Point(288, 3);
             this.panel1dot.Name = "panel1dot";
             this.panel1dot.RowCount = 3;
             this.panel1dot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
@@ -153,7 +153,7 @@
             this.panelLocalDNS.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
             this.panelLocalDNS.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
             this.panelLocalDNS.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panelLocalDNS.Size = new System.Drawing.Size(173, 70);
+            this.panelLocalDNS.Size = new System.Drawing.Size(172, 70);
             this.panelLocalDNS.TabIndex = 2;
             this.panelLocalDNS.Visible = false;
             // 
@@ -163,7 +163,7 @@
             this.labelLocal.AutoSize = true;
             this.labelLocal.Location = new System.Drawing.Point(3, 48);
             this.labelLocal.Name = "labelLocal";
-            this.labelLocal.Size = new System.Drawing.Size(167, 20);
+            this.labelLocal.Size = new System.Drawing.Size(166, 20);
             this.labelLocal.TabIndex = 2;
             // 
             // labelIPLocal
@@ -172,7 +172,7 @@
             this.labelIPLocal.AutoSize = true;
             this.labelIPLocal.Location = new System.Drawing.Point(3, 24);
             this.labelIPLocal.Name = "labelIPLocal";
-            this.labelIPLocal.Size = new System.Drawing.Size(167, 20);
+            this.labelIPLocal.Size = new System.Drawing.Size(166, 20);
             this.labelIPLocal.TabIndex = 1;
             this.labelIPLocal.Text = "0.0.0.0";
             // 
@@ -182,7 +182,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 1);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(167, 20);
+            this.label2.Size = new System.Drawing.Size(166, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "本地DNS";
             // 
@@ -203,7 +203,7 @@
             this.labelPingTimeOut.AutoSize = true;
             this.labelPingTimeOut.Location = new System.Drawing.Point(110, 99);
             this.labelPingTimeOut.Name = "labelPingTimeOut";
-            this.labelPingTimeOut.Size = new System.Drawing.Size(173, 20);
+            this.labelPingTimeOut.Size = new System.Drawing.Size(172, 20);
             this.labelPingTimeOut.TabIndex = 4;
             // 
             // labelTCPingCheck
@@ -223,7 +223,7 @@
             this.labelTCPingTimeOut.AutoSize = true;
             this.labelTCPingTimeOut.Location = new System.Drawing.Point(110, 166);
             this.labelTCPingTimeOut.Name = "labelTCPingTimeOut";
-            this.labelTCPingTimeOut.Size = new System.Drawing.Size(173, 20);
+            this.labelTCPingTimeOut.Size = new System.Drawing.Size(172, 20);
             this.labelTCPingTimeOut.TabIndex = 7;
             // 
             // Form1
@@ -237,6 +237,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "EasyChecker";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1dot.ResumeLayout(false);

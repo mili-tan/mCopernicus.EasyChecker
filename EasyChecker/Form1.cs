@@ -57,9 +57,9 @@ namespace EasyChecker
                 }
 
 
-                PingReply replyPing = MyPing(sEntity.ServerIpStr);
-                labelPingTimeOut.Text = replyPing.RoundtripTime + @"ms";
-                if (replyPing.Status == IPStatus.Success)
+                var replyPing = Ping.Tcping(sEntity.ServerIpStr, sEntity.Port);
+                labelPingTimeOut.Text = $@"{replyPing.Min()}/{replyPing.Average()}/{replyPing.Max()}ms";
+                if (replyPing.Average() != 0)
                 {
                     labelPingCheck.ForeColor = Color.Green;
                 }
@@ -68,7 +68,7 @@ namespace EasyChecker
                     labelPingCheck.ForeColor = Color.Red;
                 }
 
-                var replyTcping = Tcping.Ping(sEntity.ServerIpStr, sEntity.Port);
+                var replyTcping = Ping.Tcping(sEntity.ServerIpStr, sEntity.Port);
                 labelTCPingTimeOut.Text = $@"{replyTcping.Min()}/{replyTcping.Average()}/{replyTcping.Max()}ms";
                 if (replyTcping.Average() != 0)
                 {
@@ -107,11 +107,9 @@ namespace EasyChecker
             return addr;
         }
 
-        public static PingReply MyPing(string ipStr)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            Ping ping = new Ping();
-            byte[] bufferBytes = {00,01,00,01,00,01,00,01};
-            return ping.Send(ipStr, 50, bufferBytes);
+
         }
     }
 }

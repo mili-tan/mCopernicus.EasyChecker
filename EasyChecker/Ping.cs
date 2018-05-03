@@ -7,9 +7,9 @@ using System.Threading;
 
 namespace EasyChecker
 {
-    class Tcping
+    static class Ping
     {
-        public static List<int> Ping(string ip,int port)
+        public static List<int> Tcping(string ip,int port)
         {
             var times = new List<int>();
             for (int i = 0; i < 4; i++)
@@ -49,6 +49,20 @@ namespace EasyChecker
                 socks.Close();
 
                 Thread.Sleep(100);
+            }
+
+            return times;
+        }
+
+        public static List<int> MPing(string ipStr)
+        {
+            System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
+            byte[] bufferBytes = { 00, 01, 00, 01, 00, 01, 00, 01 };
+
+            var times = new List<int>();
+            for (int i = 0; i < 4; i++)
+            {
+                times.Add(Convert.ToInt32(ping.Send(ipStr, 50, bufferBytes).RoundtripTime));
             }
 
             return times;

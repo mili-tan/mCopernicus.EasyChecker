@@ -54,7 +54,7 @@
     <Compile Include="MojoUnityJson.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tcping.cs" />
+    <Compile Include="Ping.cs" />
     <Compile Include="URLTools.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
