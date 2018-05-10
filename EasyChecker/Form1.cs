@@ -111,7 +111,7 @@ namespace EasyChecker
         {
             string getIpStr = new WebClient().DownloadString($"http://ip.taobao.com/service/getIpInfo.php?ip={ipStr}");
             JsonValue ipJson = Json.Parse(getIpStr).AsObjectGet("data");
-            return Encoding.UTF8.GetString(Encoding.Default.GetBytes(ipJson.AsObjectGetString("city") + ipJson.AsObjectGetString("isp")));
+            return Encoding.UTF8.GetString(Encoding.Default.GetBytes(ipJson.AsObjectGetString("city") + ipJson.AsObjectGetString("isp"))).Replace("X","");
         }
 
         private void Form1_Load(object sender, EventArgs e)
