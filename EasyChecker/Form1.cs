@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MojoUnity;
@@ -106,9 +107,17 @@ namespace EasyChecker
             return addr;
         }
 
+        public static string GeoIspLocal(string ipStr)
+        {
+            string getIpStr = new WebClient().DownloadString($"http://ip.taobao.com/service/getIpInfo.php?ip={ipStr}");
+            JsonValue ipJson = Json.Parse(getIpStr).AsObjectGet("data");
+            return Encoding.UTF8.GetString(Encoding.Default.GetBytes(ipJson.AsObjectGetString("city") + ipJson.AsObjectGetString("isp")));
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            string myIP = new  WebClient().DownloadString("https://api.ipify.org/");
+            Text += @" " + GeoIspLocal(myIP);
         }
     }
 }
